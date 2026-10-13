@@ -3,8 +3,8 @@
 **Groupe :** Aiman, Aisha, Ilman, Danial
 
 ## Légende
-- **R** : Réalise
-- **A** : Approuve
+- **R** : Résponsable
+- **A** : Approbateur
 - **C** : Consulté
 - **I** : Informé
 
