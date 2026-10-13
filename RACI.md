@@ -13,9 +13,9 @@
 | Tâche | Aiman | Aisha | Ilman | Danial |
 |---|---|---|---|---|
 | RACI & GitHub | **R** | C | C | C |
-| Programme Java | R | C | I | C |
-| Base de données | C | **R** | C | C |
-| Site Web | I | C | **R** | C |
+| Programme Java | R | C | I | A |
+| Base de données | C | **R** | A | C |
+| Site Web | A | C | **R** | C |
 | Intégration | C | C | C | **R** |
 | Tests & Documentation | C | C | C | **R** |
 
@@ -28,7 +28,7 @@
 | **Aiman** | Développeur Java | Programme Java |
 | **Aisha** | Administratrice BDD | Conception et création de la base de données, requêtes SQL |
 | **Ilman** | Développeur Web | Site web du quiz, communication avec la BDD |
-| **Danial** | Intégrateur / API | Communication entre les blocs (Java↔Web↔BDD), tests, documentation, GitHub |
+| **Danial** | Intégrateur / API | Communication entre les blocs (Java↔Web↔BDD) |
 
 ---
 
