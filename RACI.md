@@ -10,7 +10,7 @@
 
 ## Tableau RACI
 
-| Tâche | Aiman | Aisha | Ilman | Danial |
+| Tâche | Aiman | Aisya | Ilman | Danial |
 |---|---|---|---|---|
 | RACI & GitHub | **R** | C | C | C |
 | Programme Java | R | C | I | A |
@@ -26,7 +26,7 @@
 | Membre | Rôle principal | Responsabilités |
 |--------|----------------|-----------------|
 | **Aiman** | Développeur Java | Programme Java |
-| **Aisha** | Administratrice BDD | Conception et création de la base de données, requêtes SQL |
+| **Aisya** | Administratrice BDD | Conception et création de la base de données, requêtes SQL |
 | **Ilman** | Développeur Web | Site web du quiz, communication avec la BDD |
 | **Danial** | Intégrateur / API | Communication entre les blocs (Java↔Web↔BDD) |
 
