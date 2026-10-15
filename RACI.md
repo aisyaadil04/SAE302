@@ -21,6 +21,17 @@
 
 ---
 
+| Tâche / Rôle | R | A | C | I |
+|---|---|---|---|---|
+| RACI & GitHub | Aiman | - | Aisya, Danial, Ilman | Tout |
+| Programme Java | Aiman | Danial | Aisya | Tout |
+| Base de données | Aisya | Ilman | Danial, Aiman | Tout |
+| Site Web | Ilman | Aiman | Aiman, Aisya | Tout |
+| Intégration | Danial | - | Aisya, Ilman, Aiman | Tout |
+| Tests & Documentation | Danial | - | Aiman, Aisya, Ilman | Tout |
+
+---
+
 ## Répartition des rôles principaux
 
 | Membre | Rôle principal | Responsabilités |
