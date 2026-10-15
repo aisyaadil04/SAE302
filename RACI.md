@@ -1,6 +1,6 @@
 # RACI - SAÉ 3.02
 
-**Groupe :** Aiman, Aisha, Ilman, Danial
+**Groupe :** Aiman, Aisya, Ilman, Danial
 
 ## Légende
 - **R** : Résponsable
