@@ -10,4 +10,4 @@ Prompt:
 Donne-moi un guide pour fichier markdown.
 
 Resultats:
-cf. GuidageMarkdown.md
+cf. GuidageMarkdown.txt
