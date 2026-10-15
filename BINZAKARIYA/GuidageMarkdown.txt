@@ -1,0 +1,266 @@
+# Guide complet du format Markdown
+
+## 📝 Qu'est-ce que Markdown ?
+
+Markdown est un langage de balisage léger créé par John Gruber en 2004. Il permet de formater du texte facilement avec une syntaxe simple et lisible, convertible ensuite en HTML.
+
+**Extension de fichier :** `.md` ou `.markdown`
+
+---
+
+## 🎯 Titres
+
+```markdown
+# Titre niveau 1 (H1)
+## Titre niveau 2 (H2)
+### Titre niveau 3 (H3)
+#### Titre niveau 4 (H4)
+##### Titre niveau 5 (H5)
+###### Titre niveau 6 (H6)
+```
+
+> Alternative (Setext) pour H1 et H2 :
+```markdown
+Titre H1
+========
+
+Titre H2
+--------
+```
+
+---
+
+## ✍️ Mise en forme du texte
+
+```markdown
+*italique* ou _italique_
+**gras** ou __gras__
+***gras italique*** ou ___gras italique___
+~~barré~~
+`code en ligne`
+```
+
+Rendu : *italique*, **gras**, ***gras italique***, ~~barré~~, `code`
+
+---
+
+## 📋 Listes
+
+### Liste à puces
+```markdown
+- Élément 1
+- Élément 2
+  - Sous-élément
+  - Sous-élément
+* Autre puce possible
++ Encore une autre
+```
+
+### Liste numérotée
+```markdown
+1. Premier
+2. Deuxième
+   1. Sous-élément
+   2. Sous-élément
+3. Troisième
+```
+
+### Liste de tâches
+```markdown
+- [x] Tâche terminée
+- [ ] Tâche à faire
+- [ ] Autre tâche
+```
+
+---
+
+## 🔗 Liens et images
+
+```markdown
+[Texte du lien](https://exemple.com)
+[Lien avec titre](https://exemple.com "Titre au survol")
+
+![Texte alternatif](image.png)
+![Image avec titre](image.png "Titre de l'image")
+
+<!-- Lien de référence -->
+[Google][1]
+[1]: https://google.com
+```
+
+---
+
+## 💬 Citations
+
+```markdown
+> Ceci est une citation
+> sur plusieurs lignes
+
+> Citation imbriquée
+>> Niveau 2
+>>> Niveau 3
+```
+
+---
+
+## 💻 Code
+
+### Code en ligne
+```markdown
+Utilisez `print()` en Python.
+```
+
+### Bloc de code
+````markdown
+```python
+def hello():
+    print("Bonjour")
+```
+````
+
+Langages courants : `python`, `javascript`, `bash`, `html`, `css`, `json`, `sql`, `yaml`
+
+---
+
+## 📊 Tableaux
+
+```markdown
+| Colonne 1 | Colonne 2 | Colonne 3 |
+|-----------|:---------:|----------:|
+| Gauche    | Centré    | Droite    |
+| Valeur    | Valeur    | Valeur    |
+```
+
+- `:---` → aligné à gauche
+- `:---:` → centré
+- `---:` → aligné à droite
+
+---
+
+## ➖ Lignes horizontales
+
+```markdown
+---
+***
+___
+```
+
+---
+
+## 🎨 HTML intégré
+
+Markdown accepte du HTML brut :
+```markdown
+<br>
+<hr>
+<strong>Texte</strong>
+<span style="color:red">Rouge</span>
+```
+
+---
+
+## 🧩 Notes et alertes (GitHub Flavored Markdown)
+
+```markdown
+> [!NOTE]
+> Information utile.
+
+> [!TIP]
+> Conseil pratique.
+
+> [!WARNING]
+> Avertissement.
+
+> [!IMPORTANT]
+> Information importante.
+
+> [!CAUTION]
+> Attention danger.
+```
+
+---
+
+## 🔤 Échapper des caractères
+
+Utilisez `\` pour afficher un caractère spécial :
+```markdown
+\*pas en italique\*
+\# pas un titre
+```
+
+Caractères échappables : `\ ` ` * _ { } [ ] ( ) # + - . ! |`
+
+---
+
+## 📐 Formules mathématiques (LaTeX)
+
+```markdown
+En ligne : $E = mc^2$
+
+Bloc :
+$$
+\int_{a}^{b} f(x) \, dx
+$$
+```
+
+> Supporté par GitHub, GitLab, Obsidian, VS Code (avec extension).
+
+---
+
+## 🗂️ Diagrammes Mermaid
+
+````markdown
+```mermaid
+graph TD
+    A[Début] --> B{Condition}
+    B -->|Oui| C[Action 1]
+    B -->|Non| D[Action 2]
+```
+````
+
+---
+
+## 📌 Notes de bas de page
+
+```markdown
+Voici une affirmation[^1].
+
+[^1]: Source de l'affirmation.
+```
+
+---
+
+## ✅ Bonnes pratiques
+
+1. **Laissez une ligne vide** entre les blocs (titres, listes, paragraphes)
+2. **Un seul H1** par document, en haut
+3. **Respectez la hiérarchie** des titres (ne pas sauter de niveaux)
+4. **Utilisez des liens de référence** pour les liens répétés
+5. **Nommez les blocs de code** avec leur langage
+6. **Ajoutez des espaces** autour des `|` dans les tableaux pour la lisibilité
+7. **Utilisez des listes de tâches** pour le suivi de projets
+
+---
+
+## 🛠️ Outils utiles
+
+| Outil | Usage |
+|-------|-------|
+| **VS Code** | Éditeur avec aperçu intégré (`Ctrl+Shift+V`) |
+| **Obsidian** | Prise de notes avec Markdown |
+| **Typora** | Éditeur WYSIWYG |
+| **Marked 2** | Aperçu macOS |
+| **Pandoc** | Conversion Markdown → PDF, DOCX, etc. |
+| **markdownlint** | Vérification du style |
+
+---
+
+## 📚 Ressources
+
+- [Guide original de John Gruber](https://daringfireball.net/projects/markdown/)
+- [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
+- [CommonMark Spec](https://commonmark.org/)
+- [Markdown Guide](https://www.markdownguide.org/)
+
+---
+
