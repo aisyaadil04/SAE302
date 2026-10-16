@@ -9,7 +9,7 @@
 
 ---
 
-## 1. Classe `Reponse`
+## 1. Classe `Reponse` (Responsable : Ilman)
 
 ### Attributs
 
@@ -38,7 +38,7 @@
 
 ---
 
-## 2. Classe `Question`
+## 2. Classe `Question` (Responsable : Danial)
 
 ### Attributs
 
@@ -69,7 +69,7 @@
 
 ---
 
-## 3. Classe `Quiz`
+## 3. Classe `Quiz` (Responsable : Aiman)
 
 ### Attributs
 
@@ -99,7 +99,7 @@
 
 ---
 
-## 4. Classe `BDD`
+## 4. Classe `BDD` (Responsable : Aisya)
 
 ### Attributs
 
@@ -123,7 +123,7 @@
 
 ---
 
-## 5. Classe `Main`
+## 5. Classe `Main` (Responsable : Danial)
 
 ### Méthode
 
