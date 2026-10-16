@@ -114,15 +114,15 @@
 
 | Méthode | Type retour | Description |
 |---------|-------------|-------------|
-| getConnection() | `Connection` | Initier connexion à la BDD |
-| ajouterQ(Question q) | `void` | Ajouter la question à la BDD |
-| supprimerQ(Question q) | `void` | Supprimer la question à la BDD |
-| setTypeQ(String type) | `void` | Modifier le type de question à la BDD |
-| setEnonceQ(String enonce) | `void` | Modifier l'enonce de question à la BDD |
-| ajouterR(Reponse r) | `void` | Ajouter la réponse à la BDD |
-| supprimerR(Reponse r) | `void` | Supprimer la réponse à la BDD |
-| setTypeR(String type) | `void` | Modifier le type de réponse à la BDD |
-| setEnonceR(String enonce) | `void` | Modifier l'énoncé de réponse à la BDD |
+| `getConnection()` | `Connection` | Initier connexion à la BDD |
+| `ajouterQ(Question q)` | `void` | Ajouter la question à la BDD |
+| `supprimerQ(Question q)` | `void` | Supprimer la question à la BDD |
+| `setTypeQ(String type)` | `void` | Modifier le type de question à la BDD |
+| `setEnonceQ(String enonce)` | `void` | Modifier l'enonce de question à la BDD |
+| `ajouterR(Reponse r)` | `void` | Ajouter la réponse à la BDD |
+| `supprimerR(Reponse r)` | `void` | Supprimer la réponse à la BDD |
+| `setTypeR(String type)` | `void` | Modifier le type de réponse à la BDD |
+| `setEnonceR(String enonce)` | `void` | Modifier l'énoncé de réponse à la BDD |
 
 ---
 
