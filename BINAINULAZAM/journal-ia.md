@@ -9,13 +9,10 @@
   > Our group is developing CyberQuest, an interactive, gamified cybersecurity learning platform inspired by Duolingo. My responsibility is the website (Site Web). I need you to create a complete, professional, easy-to-understand functional flowchart (organigramme fonctionnel) explaining how the entire website will work. The flowchart must explain the intended functionalities and user experience without showing any code or implementation.
   
   > PART 1 — WEBSITE CONCEPT Name: CyberQuest. CyberQuest is a fun, interactive cybersecurity learning website inspired by Duolingo. Its purpose is to help users improve their knowledge of cybersecurity and good computer security practices through quizzes, progressive challenges, educational explanations, and rewards. The website must be intuitive, engaging, responsive, and accessible without requiring an account. Its main concept is: Apprendre → S'entraîner → Relever des défis → Gagner des récompenses → Progresser
-  > PART 2 — WEBSITE ENTRY POINT The flowchart must begin with: ACCÈS AU SITE CYBERQUEST ↓ PAGE D'ACCUEIL The homepage introduces CyberQuest and gives users four main options. Option 1 — Aventure CyberQuest Access the main progressive learning experience. Users complete cybersecurity worlds and unlock new challenges. Option 2 — Entraînement libre Practise any cybersecurity topic without progression restrictions. Users can choose a theme and difficulty level. Option 3 — Défi rapide Answer five randomly selected cybersecurity questions. This mode is designed for users who want a short learning session. Option 4 — Ma progression View personal learning progress. Display:
-Total XP earned.
-Completed worlds.
-Unlocked levels.
-Best quiz scores.
-Achievement badges.
-Previously completed challenges. The website should remember user progress without requiring a login. PART 3 — PROGRESSIVE LEARNING SYSTEM When users select: AVENTURE CYBERQUEST They enter a progression map containing seven cybersecurity worlds. Seven cybersecurity worlds Monde 1 — Architecture d'Internet
+  
+  > PART 2 — WEBSITE ENTRY POINT The flowchart must begin with: ACCÈS AU SITE CYBERQUEST ↓ PAGE D'ACCUEIL The homepage introduces CyberQuest and gives users four main options. Option 1 — Aventure CyberQuest Access the main progressive learning experience. Users complete cybersecurity worlds and unlock new challenges. Option 2 — Entraînement libre Practise any cybersecurity topic without progression restrictions. Users can choose a theme and difficulty level. Option 3 — Défi rapide Answer five randomly selected cybersecurity questions. This mode is designed for users who want a short learning session. Option 4 — Ma progression View personal learning progress. Display: Total XP earned, Completed worlds, Unlocked levels, Best quiz scores, Achievement badges et Previously completed challenges.
+  
+  > PART 3 — PROGRESSIVE LEARNING SYSTEM When users select: AVENTURE CYBERQUEST They enter a progression map containing seven cybersecurity worlds. Seven cybersecurity worlds Monde 1 — Architecture d'Internet
 Understanding the internet.
 Basic networking concepts.
 How information travels between devices. Monde 2 — Les cyberattaques
