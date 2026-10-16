@@ -35,7 +35,6 @@
 | `setType(String type)` | `void` | Modifie le type |
 | `setContenu(String contenu)` | `void` | Modifie le contenu |
 | `setValide(boolean valide)` | `void` | Modifie la validité |
-| `toJson()` | `String` | Convertit en JSON |
 
 ---
 
@@ -62,7 +61,6 @@
 | `ajouterReponse(Reponse r)` | `void` | Ajoute une réponse |
 | `supprimerReponse(Reponse r)` | `void` | Supprime une réponse |
 | `afficher()` | `void` | Affiche la question |
-| `toJson()` | `String` | Convertit en JSON |
 | `getType()` | `String` | Retourne le type |
 | `getEnonce()` | `String` | Retourne l'énoncé |
 | `getReponses()` | `ArrayList<Reponse>` | Retourne les réponses |
@@ -95,7 +93,6 @@
 | `afficher()` | `void` | Affiche le quiz |
 | `lancer()` | `void` | Lance le quiz |
 | `importQR(String url)` | `void` | Importe depuis un site externe |
-| `toJson()` | `String` | Convertit en JSON |
 | `getTitre()` | `String` | Retourne le titre |
 | `getQuestions()` | `ArrayList<Question>` | Retourne les questions |
 | `setTitre(String titre)` | `void` | Modifie le titre |
