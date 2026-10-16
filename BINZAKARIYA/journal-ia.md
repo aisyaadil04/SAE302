@@ -1,13 +1,10 @@
 # Journal d'utilisation de l'IA – Aiman Iskandar Zulqarnain BIN ZAKARIYA
 
-## Aucune IA utilisée pour le moment
+## 2026-10-14 - Guidage du fichier Markdown
 
-### Partie 1: Guidage du fichier Markdown
-
-**par:**  __DeepSeek__
-
-Prompt:
-Donne-moi un guide pour fichier markdown.
-
-Resultats:
-cf. GuidageMarkdown.txt
+- **LLM utilisé :**  DeepSeek
+- **Objectif :** Un guide du fichier Markdown
+- **Prompt :**
+  > Donne-moi un guide pour fichier markdown.
+- **Réponse du LLM :** cf. GuidageMarkdown.txt
+- **Ce que j'en ai fait :** Créer un fichier markdown
