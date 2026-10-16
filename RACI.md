@@ -16,7 +16,7 @@
 | Programme Java | R | C | I | A |
 | Base de données | C | **R** | A | C |
 | Site Web | A | C | **R** | C |
-| Intégration | C | C | C | **R** |
+| Intégration et JSON | C | C | C | **R** |
 | Tests & Documentation | C | C | C | **R** |
 
 ---
@@ -27,7 +27,7 @@
 | Programme Java | Aiman | Danial | Aisya | Tout |
 | Base de données | Aisya | Ilman | Danial, Aiman | Tout |
 | Site Web | Ilman | Aiman | Aiman, Aisya | Tout |
-| Intégration | Danial | - | Aisya, Ilman, Aiman | Tout |
+| Intégration et JASON | Danial | - | Aisya, Ilman, Aiman | Tout |
 | Tests & Documentation | Danial | - | Aiman, Aisya, Ilman | Tout |
 
 ---
