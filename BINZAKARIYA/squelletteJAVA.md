@@ -17,6 +17,7 @@
 |----------|------|-------------|
 | `type` | `String` | Type de la réponse |
 | `contenu` | `String` | Texte de la réponse |
+| `id`      | `Integer` | identifiant unique de la question ou reponse | 
 | `valide` | `boolean` | Vrai si la réponse est correcte |
 
 ### Constructeur
@@ -47,6 +48,7 @@
 |----------|------|-------------|
 | `type` | `String` | Type de la question |
 | `enonce` | `String` | Texte de la question |
+| `id`      | `Integer` | identifiant unique de la question ou reponse | 
 | `reponses` | `ArrayList<Reponse>` | Liste des réponses possibles |
 
 ### Constructeur
@@ -109,20 +111,22 @@
 | Attribut | Type | Description |
 |----------|------|-------------|
 | conn | `Connection` | Initiation connection |
+| `id`      | `Integer` | identifiant unique de la question ou reponse | 
 
 ### Méthodes
 
 | Méthode | Type retour | Description |
 |---------|-------------|-------------|
+| `setId(int id)`   | `void`  | Recupération de l'identifiant de BDD |
 | `getConnection()` | `Connection` | Initier connexion à la BDD |
 | `ajouterQ(Question q)` | `void` | Ajouter la question à la BDD |
 | `supprimerQ(Question q)` | `void` | Supprimer la question à la BDD |
-| `setTypeQ(String type)` | `void` | Modifier le type de question à la BDD |
-| `setEnonceQ(String enonce)` | `void` | Modifier l'enonce de question à la BDD |
+| `setTypeQ(int id, String type)` | `void` | Modifier le type de question à la BDD |
+| `setEnonceQ(int id,String enonce)` | `void` | Modifier l'enonce de question à la BDD |
 | `ajouterR(Reponse r)` | `void` | Ajouter la réponse à la BDD |
 | `supprimerR(Reponse r)` | `void` | Supprimer la réponse à la BDD |
-| `setTypeR(String type)` | `void` | Modifier le type de réponse à la BDD |
-| `setEnonceR(String enonce)` | `void` | Modifier l'énoncé de réponse à la BDD |
+| `setTypeR(int id,String type)` | `void` | Modifier le type de réponse à la BDD |
+| `setEnonceR(int id,String enonce)` | `void` | Modifier l'énoncé de réponse à la BDD |
 
 ---
 
