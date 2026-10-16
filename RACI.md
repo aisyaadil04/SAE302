@@ -1,7 +1,5 @@
 # RACI - SAÉ 3.02
 
-**Groupe :** Aiman, Aisya, Ilman, Danial
-
 ## Légende
 - **R** : Résponsable
 - **A** : Approbateur
@@ -10,25 +8,15 @@
 
 ## Tableau RACI
 
-| Tâche | Aiman | Aisya | Ilman | Danial |
-|---|---|---|---|---|
-| RACI & GitHub | **R** | C | C | C |
-| Programme Java | R | C | I | A |
-| Base de données | C | **R** | A | C |
-| Site Web | A | C | **R** | C |
-| Intégration et JSON | C | C | C | **R** |
-| Tests & Documentation | C | C | C | **R** |
-
----
 
 | Tâche / Rôle | R | A | C | I |
 |---|---|---|---|---|
-| RACI & GitHub | Aiman | - | Aisya, Danial, Ilman | Tout |
+| RACI & GitHub | Aiman | Danial | Aisya, Ilman | Tout |
 | Programme Java | Aiman | Danial | Aisya | Tout |
 | Base de données | Aisya | Ilman | Danial, Aiman | Tout |
-| Site Web | Ilman | Aiman | Aiman, Aisya | Tout |
-| Intégration et JASON | Danial | - | Aisya, Ilman, Aiman | Tout |
-| Tests & Documentation | Danial | - | Aiman, Aisya, Ilman | Tout |
+| Site Web | Ilman | Aisya | Aiman, Danial | Tout |
+| Intégration et JSON | Danial | Aiman | Aisya, Ilman | Tout |
+| Tests & Documentation | Danial | Aiman | Aisya, Ilman | Tout |
 
 ---
 
