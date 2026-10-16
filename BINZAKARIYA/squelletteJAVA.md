@@ -17,7 +17,6 @@
 |----------|------|-------------|
 | `type` | `String` | Type de la réponse |
 | `contenu` | `String` | Texte de la réponse |
-| `id`      | `Integer` | identifiant unique de la question ou reponse | 
 | `valide` | `boolean` | Vrai si la réponse est correcte |
 
 ### Constructeur
@@ -48,7 +47,6 @@
 |----------|------|-------------|
 | `type` | `String` | Type de la question |
 | `enonce` | `String` | Texte de la question |
-| `id`      | `Integer` | identifiant unique de la question ou reponse | 
 | `reponses` | `ArrayList<Reponse>` | Liste des réponses possibles |
 
 ### Constructeur
@@ -111,13 +109,11 @@
 | Attribut | Type | Description |
 |----------|------|-------------|
 | conn | `Connection` | Initiation connection |
-| `id`      | `Integer` | identifiant unique de la question ou reponse | 
 
 ### Méthodes
 
 | Méthode | Type retour | Description |
 |---------|-------------|-------------|
-| `setId(int id)`   | `void`  | Recupération de l'identifiant de BDD |
 | `getConnection()` | `Connection` | Initier connexion à la BDD |
 | `ajouterQ(Question q)` | `void` | Ajouter la question à la BDD |
 | `supprimerQ(Question q)` | `void` | Supprimer la question à la BDD |
