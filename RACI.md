@@ -12,11 +12,15 @@
 | Tâche / Rôle | R | A | C | I |
 |---|---|---|---|---|
 | RACI & GitHub | Aiman | Danial | Aisya, Ilman | Tout |
-| Programme Java | Aiman | Danial | Aisya | Tout |
+| Programme Java (classe Quiz) | Aiman | Ilman | Aisya, Danial | Tout |
+| Programme Java (classe Question) | Danial | Aisya | Ilman, Aiman | Tout |
+| Programme Java (classe Reponse) | Ilman | Danial | Aisya, Aiman | Tout |
+| Programme Java (classe BDD) | Aisya | Ilman | Danial, Aiman | Tout |
+| Programme Java (classe Main) | Danial | Aiman | Aisya, Ilman | Tout |
 | Base de données | Aisya | Ilman | Danial, Aiman | Tout |
 | Site Web | Ilman | Aisya | Aiman, Danial | Tout |
 | Intégration et JSON | Danial | Aiman | Aisya, Ilman | Tout |
-| Tests & Documentation | Danial | Aiman | Aisya, Ilman | Tout |
+| Tests & Documentation | Aiman | Danial | Aisya, Ilman | Tout |
 
 ---
 
