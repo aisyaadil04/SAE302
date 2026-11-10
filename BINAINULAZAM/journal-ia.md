@@ -156,3 +156,18 @@ Nontechnical: No programming code, pseudocode, database queries or implementatio
 
 - **Réponse du LLM (résumé) :** Une page avec 4 organigrammes (vue d'ensemble avec les sept mondes, mode entraînement, mode défi, communication entre le site, la base de données, l'application Java et les autres groupes) et un texte d'oral d'environ 2 minutes.
 - **Ce que j'en ai fait :** J’ai corrigé les organigrammes pour qu’ils soient plus lisibles (textes qui se collaient ou mal alignés), et j’ai ajouté une explication sous chaque schéma. J’ai aussi corrigé le schéma de communication après confirmation avec mon professeur : notre application Java visite le site web d’un autre groupe, récupère son JSON, puis importe les questions dans notre base. J’ai retiré l’« application Java des autres groupes », car nous n’avons pas à la connaître.
+
+## 2026-11-10 – Problème d'authentification SSH avec ssh-copy-id
+
+• *LLM utilisé :* ChatGPT
+
+• *Objectif :* Comprendre pourquoi la commande `ssh-copy-id` ne fonctionnait pas lors de l'ajout de ma clé publique SSH sur la machine virtuelle Debian.
+
+• *Prompt :*
+  > ssh-copy-id -i ~/.ssh/id_ed25519_cyberquest.pub rt@10.3.122.20
+  >
+  > rt@10.3.122.20: Permission denied (publickey).
+
+• *Réponse du LLM (résumé) :* Le serveur SSH acceptait uniquement l'authentification par clé publique. Comme ma clé n'était pas encore autorisée sur la VM, la commande `ssh-copy-id` ne pouvait pas se connecter pour l'installer. L'IA m'a proposé d'ajouter manuellement ma clé publique dans le fichier `authorized_keys` via Remote Viewer.
+
+• *Ce que j'en ai fait :* J'ai suivi la solution proposée en accédant à la VM via Remote Viewer, puis en ajoutant ma clé publique au fichier `~/.ssh/authorized_keys` et en configurant les permissions nécessaires (`chmod 700` et `chmod 600`). Cette méthode m'a permis de poursuivre la configuration SSH sans modifier les paramètres du serveur.
