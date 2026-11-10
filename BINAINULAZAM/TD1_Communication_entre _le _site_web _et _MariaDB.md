@@ -507,7 +507,7 @@ ls -l /var/www/cyberquest-config/db.php
 Le fichier appartenait à l'utilisateur `rt` et au groupe `rt`, alors qu'Apache devait pouvoir le lire via le groupe `www-data`.
 
 
-J'ai ensuite utilisé ChatGPT pour donner la command pour corrigé le groupe du fichier :
+J'ai ensuite utilisé ChatGPT pour demander la command pour corrigé le groupe du fichier :
 
 ```bash
 sudo chown rt:www-data /var/www/cyberquest-config/db.php
