@@ -229,7 +229,7 @@ $themes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ```
 
-Capture : 
+Capture : ![Affichage des thèmes CyberQuest](captures/TD1_themes.png)
 ---
 
 ## 8. Deuxième test PDO — Récupération d'une question et de ses réponses
@@ -472,14 +472,14 @@ Le code d'affichage prévu est :
 <?php endif; ?>
 ```
 
-Capteur : ![Affichage des thèmes CyberQuest](captures/TD1_bonne.png)
-![Affichage des thèmes CyberQuest](captures/TD1_mauvaise.png)
+Capteur : ![Affichage des bonne](captures/TD1_bonne.png)
+![Affichage des mauvaise](captures/TD1_mauvaise.png)
 ---
 
 
-## 12. Problèmes rencontrés et solutions
+## 11. Problèmes rencontrés et solutions
 
-### 12.1. Problème de permissions sur `db.php`
+### 11.1. Problème de permissions sur `db.php`
 
 Lors de mon premier test, la page `test_bdd.php` affichait une page blanche.
 
@@ -506,20 +506,8 @@ ls -l /var/www/cyberquest-config/db.php
 
 Le fichier appartenait à l'utilisateur `rt` et au groupe `rt`, alors qu'Apache devait pouvoir le lire via le groupe `www-data`.
 
-J'ai confirmé le problème avec :
 
-```bash
-sudo -u www-data test -r /var/www/cyberquest-config/db.php \
-  && echo "ACCESS OK" || echo "ACCESS DENIED"
-```
-
-Résultat :
-
-```text
-ACCESS DENIED
-```
-
-J'ai corrigé le groupe du fichier :
+J'ai ensuite utilisé ChatGPT pour donner la command pour corrigé le groupe du fichier :
 
 ```bash
 sudo chown rt:www-data /var/www/cyberquest-config/db.php
@@ -529,122 +517,3 @@ Le fichier conservait les permissions `640`, permettant sa lecture par le groupe
 
 Après correction, Apache pouvait accéder à `db.php`.
 
-### 12.2. Erreur d'authentification MariaDB
-
-Après la correction des permissions, le navigateur affichait :
-
-```text
-Erreur de connexion à la base de données.
-```
-
-J'ai de nouveau consulté le journal Apache.
-
-Le message indiquait :
-
-```text
-SQLSTATE[HY000] [1045]
-Access denied for user 'quiz_user'@'localhost'
-```
-
-Pour vérifier les identifiants, j'ai effectué une connexion directe depuis le terminal :
-
-```bash
-mariadb -u quiz_user -p quiz
-```
-
-La connexion à MariaDB a fonctionné avec le mot de passe de l'utilisateur `quiz_user`.
-
-Le problème venait donc du mot de passe renseigné dans le fichier PHP.
-
-J'ai corrigé les informations de connexion dans `db.php`, puis actualisé la page.
-
-Cette fois, les sept thèmes ont été affichés correctement.
-
-### 12.3. Bilan du dépannage
-
-Ces deux erreurs m'ont permis de distinguer :
-
-- Une erreur de permissions Linux empêchant Apache de lire un fichier.
-- Une erreur d'authentification entre PHP et MariaDB.
-
-J'ai également appris à utiliser les journaux Apache pour identifier la cause d'une erreur plutôt que de modifier la configuration sans diagnostic.
-
----
-
-## 13. Tests réalisés et résultats
-
-| N° | Test | Résultat |
-|---|---|---|
-| 1 | Vérification d'Apache | Réussi |
-| 2 | Vérification de PHP | Réussi |
-| 3 | Vérification de PDO et `pdo_mysql` | Réussi |
-| 4 | Vérification du service MariaDB | Réussi |
-| 5 | Vérification des tables `theme`, `question`, `reponse` | Réussi |
-| 6 | Vérification des permissions MariaDB | Réussi |
-| 7 | Connexion PHP → MariaDB avec PDO | Réussi |
-| 8 | Récupération des sept thèmes | Réussi |
-| 9 | Affichage des thèmes dans le navigateur | Réussi |
-| 10 | Jointure SQL entre questions et réponses | Réussi |
-| 11 | Récupération d'une question avec PDO | Réussi |
-| 12 | Récupération de ses réponses avec PDO | Réussi |
-| 13 | Affichage de la question dans le navigateur | Réussi |
-| 14 | Ajout d'un formulaire et d'un bouton de validation | Réussi |
-| 15 | Vérification complète des réponses soumises | À confirmer |
-| 16 | Export JSON `/export` | Non réalisé à cette étape |
-
----
-
-## 14. Travail restant
-
-Pour poursuivre le développement du site web, les prochaines étapes prévues sont :
-
-1. Finaliser et tester la vérification des réponses.
-2. Permettre la sélection des questions selon les thèmes et niveaux.
-3. Afficher plusieurs questions dans un même quiz.
-4. Intégrer les différents types de questions.
-5. Développer la maquette puis l'interface finale CyberQuest.
-6. Ajouter les modes entraînement et défi.
-7. Implémenter le système de scores et de progression.
-8. Développer l'export JSON accessible à l'adresse `/export`, conformément aux exigences de la SAÉ.
-
-Le travail actuel est volontairement limité à une première validation technique de la communication Web ↔ SGBD.
-
----
-
-## 15. Conclusion
-
-Ce TD m'a permis de mettre en place et de tester une communication fonctionnelle entre Apache, PHP et la base MariaDB de notre projet CyberQuest.
-
-Grâce à PDO, j'ai pu exécuter des requêtes SQL depuis PHP, récupérer les sept thèmes de cybersécurité et afficher une question avec ses réponses directement depuis la base de données.
-
-Les problèmes rencontrés m'ont également permis de mieux comprendre les permissions Linux, la gestion des utilisateurs MariaDB et le diagnostic des erreurs à partir des journaux Apache.
-
-Cette première étape constitue la base technique nécessaire au développement du site web CyberQuest. Elle permettra par la suite d'intégrer les fonctionnalités de quiz, de progression et d'échange de données avec l'application Java.
-
----
-
-## 16. Captures d'écran à joindre
-
-Pour documenter le travail réalisé, les captures suivantes peuvent être ajoutées au dépôt GitHub :
-
-**Capture 1 — Vérification de la BDD**
-
-Résultat des commandes `DESCRIBE` sur les trois tables.
-
-**Capture 2 — Jointure SQL**
-
-Résultat de la requête `JOIN` montrant la question et ses deux réponses.
-
-**Capture 3 — Affichage des thèmes**
-
-Page `test_bdd.php` affichant les sept thèmes récupérés depuis MariaDB.
-
-**Capture 4 — Affichage de la question**
-
-Page `test_question.php` affichant une question et ses réponses.
-
-**Capture 5 — Vérification des réponses**
-
-À ajouter après avoir confirmé le fonctionnement des messages « Bonne réponse » et « Mauvaise réponse ».
-
-Les captures ne doivent pas contenir les mots de passe ou les autres informations sensibles de la VM.
