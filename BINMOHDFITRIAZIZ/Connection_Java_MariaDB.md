@@ -92,8 +92,6 @@ public class TestBDD {
 }
 ```
 
-Les identifiants de connexion doivent correspondre à la configuration de MariaDB sur la machine virtuelle.
-
 ---
 
 ## 5. Compilation et exécution
