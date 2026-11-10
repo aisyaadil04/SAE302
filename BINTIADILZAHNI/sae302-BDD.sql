@@ -1,3 +1,5 @@
+-- Ces commandes ont été utilisées dans HeidiSQL sur un ordinateur personnel avant d'accéder à MariaDB sur une machine virtuelle.
+
 USE quiz;
 
 DROP TABLE IF EXISTS reponse;
