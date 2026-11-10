@@ -169,3 +169,16 @@ Nontechnical: No programming code, pseudocode, database queries or implementatio
 - **Réponse du LLM :** ChatGPT m'a expliqué que la VM acceptait uniquement l'authentification par clé publique. Comme ma clé n'était pas encore enregistrée sur le serveur, `ssh-copy-id` ne pouvait pas se connecter pour l'ajouter. Il m'a donc recommandé de passer par Remote Viewer pour ajouter manuellement la clé dans le fichier `~/.ssh/authorized_keys` de la VM.
 
 - **Ce que j'en ai fait :** Je me suis connecté à la VM via Remote Viewer, puis j'ai créé le dossier `.ssh`, ajouté ma clé publique dans `authorized_keys` et configuré les permissions avec `chmod 700 ~/.ssh` et `chmod 600 ~/.ssh/authorized_keys`.
+
+## 2026-11-10 – Résolution d'un problème de permissions sur le fichier db.php
+
+- **LLM utilisé :** ChatGPT 
+
+- **Objectif :** Trouver la commande Linux permettant de corriger les permissions du fichier `db.php`
+
+- **Prompt :**
+  > The `test_bdd.php` affiche une page white i received : `Failed opening required '/var/www/cyberquest-config/db.php' Permission denied`. Le fichier belongs to  `rt` et au groupe `rt`. how to let apache (`www-data`) read this ficher?
+
+- **Réponse du LLM :** ChatGPT m'a proposé de modifier le groupe propriétaire du fichier avec la commande `sudo chown rt:www-data /var/www/cyberquest-config/db.php`
+
+- **Ce que j'en ai fait :** J'ai utilisé la commande proposée sur la VM Debian. Après la modification, Apache pouvait lire le fichier `db.php`.
