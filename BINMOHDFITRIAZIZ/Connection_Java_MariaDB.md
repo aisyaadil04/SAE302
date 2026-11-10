@@ -62,8 +62,8 @@ public class TestBDD {
     public static void main(String[] args) {
 
         String url = "jdbc:mariadb://localhost:3306/quiz";
-        String user = "quiz_app";
-        String password = "YOUR_PASSWORD";
+        String user = "quiz_user";
+        String password = "bddmelayu";
 
         try (Connection conn =
                 DriverManager.getConnection(url, user, password)) {
