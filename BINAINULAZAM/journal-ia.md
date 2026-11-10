@@ -154,17 +154,18 @@ Professional: Suitable for a BUT Réseaux & Télécommunications project present
 Educational: Someone unfamiliar with CyberQuest should immediately understand how the website works.
 Nontechnical: No programming code, pseudocode, database queries or implementation details.
 
-- **Réponse du LLM (résumé) :** Une page avec 4 organigrammes (vue d'ensemble avec les sept mondes, mode entraînement, mode défi, communication entre le site, la base de données, l'application Java et les autres groupes) et un texte d'oral d'environ 2 minutes.
+- **Réponse du LLM :** Une page avec 4 organigrammes (vue d'ensemble avec les sept mondes, mode entraînement, mode défi, communication entre le site, la base de données, l'application Java et les autres groupes) et un texte d'oral d'environ 2 minutes.
 - **Ce que j'en ai fait :** J’ai corrigé les organigrammes pour qu’ils soient plus lisibles (textes qui se collaient ou mal alignés), et j’ai ajouté une explication sous chaque schéma. J’ai aussi corrigé le schéma de communication après confirmation avec mon professeur : notre application Java visite le site web d’un autre groupe, récupère son JSON, puis importe les questions dans notre base. J’ai retiré l’« application Java des autres groupes », car nous n’avons pas à la connaître.
 
 ## 2026-11-10 – Problème avec ssh-copy-id pour ajouter ma clé SSH
 
-• *LLM utilisé :* ChatGPT 
+- **LLM utilisé :** ChatGPT 
 
-• *Objectif :* Comprendre pourquoi la commande `ssh-copy-id` ne fonctionnait pas pour ajouter ma clé publique SSH à la VM Debian.
+- **Objectif :** Comprendre pourquoi la commande `ssh-copy-id` ne fonctionnait pas pour ajouter ma clé publique SSH à la VM Debian.
 
-• *Prompt :* Why when i do ssh-copy-id to connect my mac terminal to my debian vm it says that 'Permission denied (publickey)'
+- **Prompt :** 
+  > Why when i do ssh-copy-id to connect my mac terminal to my debian vm it says that 'Permission denied (publickey)'
 
-• *Réponse du LLM (résumé) :* ChatGPT m'a expliqué que la VM acceptait uniquement l'authentification par clé publique. Comme ma clé n'était pas encore enregistrée sur le serveur, `ssh-copy-id` ne pouvait pas se connecter pour l'ajouter. Il m'a donc recommandé de passer par Remote Viewer pour ajouter manuellement la clé dans le fichier `~/.ssh/authorized_keys` de la VM.
+- **Réponse du LLM :** ChatGPT m'a expliqué que la VM acceptait uniquement l'authentification par clé publique. Comme ma clé n'était pas encore enregistrée sur le serveur, `ssh-copy-id` ne pouvait pas se connecter pour l'ajouter. Il m'a donc recommandé de passer par Remote Viewer pour ajouter manuellement la clé dans le fichier `~/.ssh/authorized_keys` de la VM.
 
-• *Ce que j'en ai fait :* Je me suis connecté à la VM via Remote Viewer, puis j'ai créé le dossier `.ssh`, ajouté ma clé publique dans `authorized_keys` et configuré les permissions avec `chmod 700 ~/.ssh` et `chmod 600 ~/.ssh/authorized_keys`.
+- **Ce que j'en ai fait :** Je me suis connecté à la VM via Remote Viewer, puis j'ai créé le dossier `.ssh`, ajouté ma clé publique dans `authorized_keys` et configuré les permissions avec `chmod 700 ~/.ssh` et `chmod 600 ~/.ssh/authorized_keys`.
