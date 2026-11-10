@@ -229,7 +229,7 @@ $themes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ```
 
-Capture : ![Affichage des thèmes CyberQuest](captures/TD1_themes.png)
+Capture : 
 ---
 
 ## 8. Deuxième test PDO — Récupération d'une question et de ses réponses
