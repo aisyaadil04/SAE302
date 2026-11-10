@@ -1,1 +1,3 @@
-# Pas 1
+# Test de communication entre Java et MariaDB
+
+
