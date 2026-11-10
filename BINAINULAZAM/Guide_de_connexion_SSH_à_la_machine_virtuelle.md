@@ -157,12 +157,41 @@ Pour quitter proprement la VM :
 exit
 ```
 
-Ou utiliser :
-
-`Ctrl + D`
 
 Le terminal revient alors sur l'ordinateur personnel.
 
 **Remarque :** Fermer la session SSH n'arrête pas la VM. Les services Apache et MariaDB continuent de fonctionner.
 ---
+### 8. Problèmes fréquents
+
+**Erreur : `Permission denied (publickey)`**
+
+Le serveur refuse l'authentification SSH.
+
+Vérifier :
+- Que la bonne clé privée est utilisée avec `-i`.
+- Que la clé publique correspondante figure dans `~/.ssh/authorized_keys` sur la VM.
+- Que le fichier `authorized_keys` appartient au bon utilisateur.
+- Que le dossier `.ssh` a les permissions `700`.
+- Que `authorized_keys` a les permissions `600`.
+
+**Erreur : `Connection timed out`**
+
+Vérifier :
+- Que le VPN universitaire est connecté.
+- Que la VM est allumée.
+- Que l'adresse IP utilisée est correcte.
+- Que le réseau autorise l'accès SSH.
+
+**Erreur : `Connection refused`**
+
+Vérifier le service SSH sur la VM :
+
+```bash
+systemctl is-active ssh
+```
+
+---
+
+
 
