@@ -129,7 +129,18 @@ Connexion réussie !
 7 - Courrier électronique
 ```
 
-**Résultat obtenu :** À compléter après vérification de la sortie réelle du programme Java.
+**Résultat obtenu :** 
+```text
+Connexion réussie !
+1 - Architecture d'Internet
+2 - Cyberattaques
+3 - Mots de passe
+4 - Sécurité du matériel
+5 - Sécurité en ligne
+6 - Sécurité des données
+7 - Courrier électronique
+```
+
 
 ---
 
