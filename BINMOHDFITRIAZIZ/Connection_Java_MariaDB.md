@@ -49,8 +49,8 @@ Création d'un fichier `TestBDD.java` pour tester la connexion à la base de don
 | Paramètre | Valeur | Description |
 |---|---|---|
 | URL | `jdbc:mariadb://localhost:3306/quiz` | Adresse du serveur MariaDB |
-| Utilisateur | `quiz_app` (exemple) | Compte MariaDB |
-| Mot de passe | Non publié | Mot de passe du compte |
+| Utilisateur | `quiz_user` | Compte MariaDB |
+| Mot de passe | `bddmelayu` | Mot de passe du compte |
 | Table | `theme` | Table utilisée pour le test |
 
 ### Code Java
