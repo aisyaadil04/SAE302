@@ -229,7 +229,7 @@ $themes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ```
 
-**Capture** : ![Affichage des thèmes CyberQuest](captures/TD1_themes.png)
+Capture : ![Affichage des thèmes CyberQuest](captures/TD1_themes.png)
 ---
 
 ## 8. Deuxième test PDO — Récupération d'une question et de ses réponses
@@ -344,10 +344,8 @@ Les données sont ensuite affichées avec :
 
 
 
-### 8.8. Résultat obtenu
 
-
-Le navigateur a affiché :
+Le navigateur a affiché : ![Affichage des questions](captures/TD1_question.png)
 
 
 
@@ -474,8 +472,10 @@ Le code d'affichage prévu est :
 <?php endif; ?>
 ```
 
-
+Capteur : ![Affichage des thèmes CyberQuest](captures/TD1_bonne.png)
+![Affichage des thèmes CyberQuest](captures/TD1_mauvaise.png)
 ---
+
 
 ## 12. Problèmes rencontrés et solutions
 
