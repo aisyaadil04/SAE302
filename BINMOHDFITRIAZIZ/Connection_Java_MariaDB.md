@@ -1,79 +1,124 @@
-Communication Java - SGBD (MariaDB) - SAÉ 3.02
 
-Auteur principal : Danial
+# Communication Java - SGBD (MariaDB) - SAÉ 3.02
 
-Projet : Application de quiz sur l'hygiène informatique et la cybersécurité
+**Auteur principal :** Danial
 
----
-
-1. Objectif
-
-Établir une connexion entre un programme Java et la base de données MariaDB à l'aide du connecteur JDBC (Java Database Connectivity).
-
-Le test consiste à récupérer et afficher les thèmes enregistrés dans la base de données "quiz".
+**Projet :** Application de quiz sur l'hygiène informatique et la cybersécurité
 
 ---
 
-2. Environnement utilisé
+## 1. Objectif
 
-Outil| Description
-Machine virtuelle Linux| Environnement d'exécution
-Java JDK| Compilation et exécution du programme
-MariaDB| Système de gestion de base de données
-JDBC| Connecteur entre Java et MariaDB
-"TestBDD.java"| Programme de test
-"quiz"| Base de données du projet
+Établir une connexion entre un programme Java et une base de données MariaDB à l'aide du connecteur JDBC (*Java Database Connectivity*).
+
+Le test consiste à récupérer et afficher les thèmes enregistrés dans la base de données `quiz`.
 
 ---
 
-3. Installation du connecteur JDBC
+## 2. Environnement utilisé
 
-Téléchargement du connecteur MariaDB à l'aide de "wget" :
+| Outil | Description |
+|---|---|
+| Machine virtuelle Linux | Environnement d'exécution |
+| Java JDK | Compilation et exécution du programme |
+| MariaDB | Système de gestion de base de données |
+| JDBC | Connecteur entre Java et MariaDB |
+| `TestBDD.java` | Programme de test |
+| `quiz` | Base de données du projet |
 
+---
+
+## 3. Installation du connecteur JDBC
+
+Téléchargement du connecteur MariaDB à l'aide de `wget` :
+
+```bash
 wget https://repo.maven.apache.org/maven2/org/mariadb/jdbc/mariadb-java-client/3.5.7/mariadb-java-client-3.5.7.jar
+```
 
-Le connecteur permet au programme Java d'envoyer des requêtes SQL au serveur MariaDB.
-
----
-
-4. Programme Java
-
-Création du fichier "TestBDD.java" pour vérifier la connexion à la base de données.
-
-Paramètres de connexion
-
-Paramètre| Valeur| Description
-URL| "jdbc:mariadb://localhost:3306/quiz"| Adresse du serveur MariaDB
-Utilisateur| "quiz_app" (exemple)| Compte MariaDB autorisé
-Mot de passe| Non publié| Mot de passe du compte
-Table| "theme"| Table utilisée pour le test
-
-Requête SQL utilisée
-
-SELECT idTheme, nomTheme FROM theme ORDER BY ordre;
-
-Cette requête permet de récupérer les identifiants et les noms des thèmes enregistrés dans la base de données.
+Le connecteur permet au programme Java de communiquer avec MariaDB et d'exécuter des requêtes SQL.
 
 ---
 
-5. Compilation et exécution
+## 4. Programme Java
 
-Compilation
+Création d'un fichier `TestBDD.java` pour tester la connexion à la base de données.
 
+### Paramètres de connexion
+
+| Paramètre | Valeur | Description |
+|---|---|---|
+| URL | `jdbc:mariadb://localhost:3306/quiz` | Adresse du serveur MariaDB |
+| Utilisateur | `quiz_app` (exemple) | Compte MariaDB |
+| Mot de passe | Non publié | Mot de passe du compte |
+| Table | `theme` | Table utilisée pour le test |
+
+### Code Java
+
+```java
+import java.sql.*;
+
+public class TestBDD {
+    public static void main(String[] args) {
+
+        String url = "jdbc:mariadb://localhost:3306/quiz";
+        String user = "quiz_app";
+        String password = "YOUR_PASSWORD";
+
+        try (Connection conn =
+                DriverManager.getConnection(url, user, password)) {
+
+            System.out.println("Connexion réussie !");
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(
+                "SELECT idTheme, nomTheme FROM theme ORDER BY ordre"
+            );
+
+            while (rs.next()) {
+                System.out.println(
+                    rs.getInt("idTheme") + " - " +
+                    rs.getString("nomTheme")
+                );
+            }
+
+            rs.close();
+            stmt.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+Les identifiants de connexion doivent correspondre à la configuration de MariaDB sur la machine virtuelle.
+
+---
+
+## 5. Compilation et exécution
+
+### Compilation
+
+```bash
 javac -cp mariadb-java-client-3.5.7.jar TestBDD.java
+```
 
-Exécution
+### Exécution
 
+```bash
 java -cp .:mariadb-java-client-3.5.7.jar TestBDD
+```
 
-L'option "-cp" permet d'indiquer le chemin du connecteur JDBC nécessaire à l'exécution du programme.
+L'option `-cp` permet de préciser le *classpath* contenant le connecteur JDBC.
 
 ---
 
-6. Résultat du test
+## 6. Résultat du test
 
-Résultat attendu
+### Résultat attendu
 
+```text
 Connexion réussie !
 1 - Architecture d'Internet
 2 - Cyberattaques
@@ -82,13 +127,14 @@ Connexion réussie !
 5 - Sécurité en ligne
 6 - Sécurité des données
 7 - Courrier électronique
+```
 
-Résultat obtenu : À confirmer avec la sortie réelle du programme.
+**Résultat obtenu :** À compléter après vérification de la sortie réelle du programme Java.
 
 ---
 
-7. Conclusion
+## 7. Conclusion
 
-Ce test permet de vérifier la communication entre Java et MariaDB à l'aide de JDBC.
+Ce test permet de vérifier la communication entre Java et le SGBD MariaDB à travers JDBC.
 
-La connexion pourra ensuite être intégrée dans la classe "BDD" du programme Java afin de permettre l'ajout, la modification et la suppression des questions et réponses du quiz.
+La connexion pourra ensuite être intégrée à la classe `BDD` du programme Java afin de gérer les questions et les réponses du quiz.
