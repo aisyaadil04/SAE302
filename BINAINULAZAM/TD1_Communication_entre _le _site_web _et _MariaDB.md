@@ -175,7 +175,7 @@ Pour cela, j'ai créé :
 
 `/var/www/html/cyberquest/test_bdd.php`
 
-### 8.2. Code du fichier `test_bdd.php`
+### 7.2. Code du fichier `test_bdd.php`
 
 ```php
 
@@ -232,15 +232,14 @@ $themes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 **Capture** : 
 ---
 
-## 9. Deuxième test PDO — Récupération d'une question et de ses réponses
+## 8. Deuxième test PDO — Récupération d'une question et de ses réponses
 
-### 9.1. Objectif
+### 8.1. Objectif
 
 Après avoir réussi à récupérer les thèmes, j'ai voulu vérifier que le site pouvait également récupérer une question et ses réponses associées.
 
-La base contenait déjà une question de test.
 
-### 9.2. Vérification SQL de la relation
+### 8.2. Vérification SQL de la relation
 
 Dans MariaDB, j'ai exécuté la requête suivante :
 
@@ -257,24 +256,14 @@ JOIN reponse AS r
 WHERE q.idQuestion = 1;
 ```
 
-Cette requête utilise une jointure `JOIN` entre les tables `question` et `reponse`.
+J'ai utilise une jointure `JOIN` entre les tables `question` et `reponse`.
 
 La relation est établie entre :
 
 `question.idQuestion` et `reponse.questionId`
 
-### 9.3. Résultat de la requête
 
-La requête a retourné :
-
-| Question | Réponse | Valide |
-|---|---|---|
-| Quel mot de passe est le plus sur? | 123456 | 0 |
-| Quel mot de passe est le plus sur? | Une phrase de pass longue et unique | 1 |
-
-Cela confirme qu'une question peut être associée à plusieurs réponses et que MariaDB identifie celles qui sont correctes.
-
-### 9.4. Création du fichier `test_question.php`
+### 8.3. Création du fichier `test_question.php`
 
 J'ai ensuite créé :
 
@@ -282,40 +271,51 @@ J'ai ensuite créé :
 
 Ce fichier utilise deux requêtes SQL pour récupérer séparément la question et ses réponses.
 
-### 9.5. Code PDO pour récupérer la question
+### 8.4. Code PDO pour récupérer la question
 
 ```php
+
 <?php
+
 require_once '/var/www/cyberquest-config/db.php';
 
-// Récupération de la question
+// SQL query to retrieve question number 1 from MariaDB
 $sql = "SELECT idQuestion, enonce, typeQuestion
         FROM question
         WHERE idQuestion = 1";
 
+// Execute the SQL query using PDO
 $stmt = $pdo->query($sql);
+
+// Retrieve the first row returned by the database
 $question = $stmt->fetch(PDO::FETCH_ASSOC);
+
 ```
 
-La méthode `fetch()` permet de récupérer une seule question.
+J'ai utilise `fetch()` pour récupérer une seule question.
 
-### 9.6. Code PDO pour récupérer les réponses
+### 8.5. Code PDO pour récupérer les réponses
 
 ```php
-// Récupération des réponses
+
+// SQL query to retrieve all answers linked to question number 1
 $sql = "SELECT idReponse, contenu
         FROM reponse
         WHERE questionId = 1";
 
+// Execute the SQL query using the PDO connection
 $stmt = $pdo->query($sql);
+
+// Retrieve all answers returned by MariaDB
 $reponses = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ```
 
-La méthode `fetchAll()` permet cette fois de récupérer toutes les propositions associées à la question.
+Ici j'ai utilise `fetchAll()` pour récupérer toutes les propositions associées à la question.
 
 Je n'ai pas sélectionné la colonne `valide` lors de l'affichage initial, afin que la bonne réponse ne soit pas transmise au navigateur avant la validation.
 
-### 9.7. Affichage de la question en HTML
+### 8.6. Affichage de la question en HTML
 
 Les données sont ensuite affichées avec :
 
@@ -342,104 +342,80 @@ Les données sont ensuite affichées avec :
 <?php endif; ?>
 ```
 
-Ce code affiche la question et toutes ses réponses sous forme de boutons radio.
 
-Chaque bouton contient l'identifiant de la réponse correspondante dans MariaDB.
 
-### 9.8. Résultat obtenu
+### 8.8. Résultat obtenu
 
-Après avoir créé le fichier, j'ai vérifié sa syntaxe :
-
-```bash
-php -l /var/www/html/cyberquest/test_question.php
-```
-
-Puis j'ai ouvert :
-
-`http://10.3.122.20/cyberquest/test_question.php`
 
 Le navigateur a affiché :
 
-**Quel mot de passe est le plus sur ?**
 
-- 123456
-- Une phrase de pass longue et unique
-
-Les deux réponses étaient sélectionnables à l'aide de boutons radio.
-
-**Résultat : récupération et affichage des questions/réponses validés.**
-
-**Capture à ajouter :** question et réponses affichées dans le navigateur.
 
 ---
 
-## 10. Ajout d'un formulaire de réponse
+## 9. Ajout d'un formulaire de réponse
 
-### 10.1. Objectif
+### 9.1. Objectif
 
 Pour préparer l'interaction avec l'utilisateur, j'ai ajouté un formulaire HTML permettant de sélectionner une réponse et de la transmettre au serveur PHP.
 
-### 10.2. Code du formulaire
+### 9.2. Code du formulaire
 
 ```php
+
+<!-- Create a form that sends the selected answer to PHP using POST -->
 <form method="POST">
 
     <?php foreach ($reponses as $reponse): ?>
         <p>
             <label>
+                <!-- Create a radio button for each answer -->
                 <input type="radio"
                        name="reponse"
                        value="<?= (int)$reponse['idReponse'] ?>"
                        required>
 
+              
                 <?= htmlspecialchars($reponse['contenu']) ?>
             </label>
         </p>
     <?php endforeach; ?>
 
+
+    
     <button type="submit">Valider ma réponse</button>
 
 </form>
+
 ```
 
-### 10.3. Explication
 
-`method="POST"` permet d'envoyer la réponse choisie au script PHP.
 
-`name="reponse"` identifie le champ transmis.
-
-`value` contient l'identifiant de la réponse dans MariaDB.
-
-`required` empêche normalement l'utilisateur de soumettre le formulaire sans sélectionner de réponse.
-
-Le bouton « Valider ma réponse » déclenche l'envoi du formulaire.
-
-### 10.4. Résultat
-
-Le formulaire et le bouton « Valider ma réponse » étaient visibles et utilisables dans le navigateur.
-
-À ce stade, le formulaire permettait de transmettre la sélection, mais la vérification de sa validité nécessitait un traitement supplémentaire côté PHP.
 
 ---
 
-## 11. Préparation de la vérification des réponses avec PDO
+## 10. Préparation de la vérification des réponses avec PDO
 
-### 11.1. Objectif
+### 10.1. Objectif
 
 L'étape suivante consiste à comparer la réponse sélectionnée par l'utilisateur avec les informations présentes dans MariaDB.
 
 Cette vérification doit se faire côté serveur afin de ne pas révéler directement les bonnes réponses au navigateur.
 
-### 11.2. Code PHP de vérification
+### 10.2. Code PHP de vérification
 
 J'ai préparé le traitement suivant pour le fichier `test_question.php` :
 
 ```php
-// Vérification de la réponse
+
+// Initialize the result as null (no answer checked yet)
 $resultat = null;
 
+// Check if the user submitted the form using POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    // Get the selected answer ID from the form
+    // FILTER_VALIDATE_INT ensures the submitted value is an integer
     $idReponse = filter_input(
         INPUT_POST,
         'reponse',
@@ -448,79 +424,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($idReponse !== false && $idReponse !== null) {
 
+        // To check if the selected answer is correct
         $sql = "SELECT valide
                 FROM reponse
                 WHERE idReponse = :idReponse
                 AND questionId = :idQuestion";
 
+        // Prepare the SQL query to safely handle the submitted values
         $stmt = $pdo->prepare($sql);
 
+        // Execute the query with the selected answer ID and current question ID
         $stmt->execute([
             'idReponse' => $idReponse,
             'idQuestion' => $question['idQuestion']
         ]);
 
+        // Retrieve the answer's validity from MariaDB
         $reponse = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        // Check if the selected answer exists in the database
         if ($reponse) {
+
+            // Convert the 'valide' value (0 or 1) into a boolean
             $resultat = (bool) $reponse['valide'];
         }
     }
 }
+
 ```
 
-### 11.3. Explication du traitement
 
-**Vérification de la méthode HTTP :**
-
-```php
-if ($_SERVER['REQUEST_METHOD'] === 'POST')
-```
-
-Permet de vérifier que l'utilisateur a soumis le formulaire.
-
-**Récupération de l'identifiant :**
-
-```php
-$idReponse = filter_input(
-    INPUT_POST,
-    'reponse',
-    FILTER_VALIDATE_INT
-);
-```
-
-Cette instruction récupère et valide l'identifiant numérique de la réponse.
-
-**Préparation de la requête SQL :**
-
-```php
-$stmt = $pdo->prepare($sql);
-```
-
-La méthode `prepare()` permet d'utiliser une requête SQL paramétrée.
-
-**Exécution :**
-
-```php
-$stmt->execute([
-    'idReponse' => $idReponse,
-    'idQuestion' => $question['idQuestion']
-]);
-```
-
-Les paramètres sont transmis à MariaDB.
-
-La condition `questionId = :idQuestion` permet de vérifier que la réponse appartient bien à la question affichée.
-
-**Lecture du résultat :**
-
-```php
-$reponse = $stmt->fetch(PDO::FETCH_ASSOC);
-```
-
-Si la réponse existe, le champ `valide` permet de déterminer si elle est correcte.
-
-### 11.4. Affichage du résultat
+### 10.3. Affichage du résultat
 
 Le code d'affichage prévu est :
 
@@ -540,9 +474,6 @@ Le code d'affichage prévu est :
 <?php endif; ?>
 ```
 
-Ce traitement permet d'afficher un message adapté selon la réponse choisie.
-
-**État :** le formulaire a été vérifié dans le navigateur et la logique de vérification a été préparée. Le test fonctionnel complet des deux résultats reste à confirmer avant de considérer cette partie comme terminée.
 
 ---
 
