@@ -1,0 +1,350 @@
+## Guide de connexion SSH à la machine virtuelle
+
+### 1. Objectif
+
+Ce guide explique comment se connecter à la machine virtuelle Debian de notre groupe à l'aide d'une clé SSH.
+
+L'objectif est de permettre à chaque membre du groupe d'accéder à la VM depuis son propre ordinateur, sans passer systématiquement par Remote Viewer (SPICE).
+
+**Informations sur notre VM :**
+
+| Paramètre | Valeur |
+|---|---|
+| Projet | SAÉ 3.02 — CyberQuest |
+| Système | Debian Linux |
+| Adresse IP | `10.3.122.20` |
+| Utilisateur Linux | `rt` |
+| Protocole | SSH |
+| Port | `22` |
+
+**Prérequis :**
+- Un ordinateur avec un terminal (macOS ou Linux).
+- Un accès au VPN de l'université si l'on se connecte depuis l'extérieur.
+- Un accès initial à la VM via Remote Viewer, ou l'aide d'un membre ayant déjà accès.
+- Le service SSH actif sur la VM.
+
+**Important :** Chaque membre du groupe doit créer sa propre paire de clés SSH. Il ne faut jamais partager sa clé privée.
+
+---
+
+### 2. Vérifier les clés SSH existantes
+
+**Sur son ordinateur personnel**, ouvrir un terminal et exécuter :
+
+```bash
+ls -la ~/.ssh
+```
+
+Cette commande affiche les fichiers du dossier `.ssh`.
+
+On peut notamment y trouver :
+
+- `id_ed25519` : clé privée.
+- `id_ed25519.pub` : clé publique.
+- `known_hosts` : liste des serveurs SSH déjà rencontrés.
+
+Si une clé existe déjà, il est possible de la réutiliser. Pour notre projet, nous recommandons de créer une clé spécifique afin d'éviter d'écraser une clé existante.
+
+---
+
+### 3. Générer une paire de clés SSH
+
+**Sur son ordinateur personnel (Mac ou Linux) :**
+
+```bash
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_cyberquest -C "cyberquest-vm"
+```
+
+Explication :
+
+| Élément | Fonction |
+|---|---|
+| `ssh-keygen` | Génère une paire de clés |
+| `-t ed25519` | Choisit l'algorithme Ed25519 |
+| `-f` | Indique le nom et le chemin des fichiers |
+| `-C` | Ajoute un commentaire pour identifier la clé |
+
+Le terminal demande ensuite :
+
+```text
+Enter passphrase (empty for no passphrase):
+```
+
+Il est recommandé de définir une phrase secrète (*passphrase*) pour protéger la clé privée.
+
+Confirmer ensuite cette phrase secrète.
+
+Deux fichiers sont créés :
+
+```text
+~/.ssh/id_ed25519_cyberquest
+~/.ssh/id_ed25519_cyberquest.pub
+```
+
+- Le premier est la **clé privée** : elle doit rester sur l'ordinateur personnel.
+- Le second est la **clé publique** : elle sera ajoutée sur la VM.
+
+Pour vérifier leur création :
+
+```bash
+ls -l ~/.ssh/id_ed25519_cyberquest*
+```
+
+---
+
+### 4. Récupérer la clé publique
+
+**Sur son ordinateur personnel :**
+
+```bash
+cat ~/.ssh/id_ed25519_cyberquest.pub
+```
+
+Le terminal affiche une ligne commençant par :
+
+```text
+ssh-ed25519 AAAA... cyberquest-vm
+```
+
+Copier cette ligne complète.
+
+**Attention :** Copier uniquement le contenu du fichier `.pub`, jamais celui de la clé privée.
+
+---
+
+### 5. Se connecter à la VM avec Remote Viewer
+
+Ouvrir le portail :
+
+https://isis.unice.fr/spice/
+
+1. Se connecter au VPN universitaire si nécessaire.
+2. Localiser la VM du groupe.
+3. Ouvrir la connexion SPICE avec Remote Viewer.
+4. Se connecter à Debian avec le compte `rt` et le mot de passe actuel du groupe.
+5. Ouvrir un terminal dans Debian.
+
+Pour vérifier l'adresse IP de la VM :
+
+```bash
+hostname -I
+```
+
+Pour vérifier que le serveur SSH fonctionne :
+
+```bash
+systemctl is-active ssh
+```
+
+Résultat attendu :
+
+```text
+active
+```
+
+**Remarque :** Un seul membre peut utiliser la console SPICE de la VM à la fois. Il faut donc se coordonner avec les autres membres du groupe.
+
+---
+
+### 6. Ajouter la clé publique sur la VM
+
+**Toutes les commandes de cette étape sont exécutées dans le terminal Debian de la VM**, sous le compte `rt`.
+
+Créer le dossier SSH si nécessaire :
+
+```bash
+mkdir -p ~/.ssh
+```
+
+Définir ses permissions :
+
+```bash
+chmod 700 ~/.ssh
+```
+
+Ouvrir le fichier contenant les clés publiques autorisées :
+
+```bash
+nano ~/.ssh/authorized_keys
+```
+
+Coller la clé publique copiée à l'étape 4.
+
+**Important :**
+- Mettre une clé publique complète par ligne.
+- Ne pas supprimer les clés publiques déjà présentes.
+- Chaque membre doit ajouter sa propre clé sur une nouvelle ligne.
+- Ne jamais ajouter de clé privée dans ce fichier.
+
+Enregistrer avec :
+
+`Ctrl + O`, puis `Entrée`.
+
+Quitter Nano avec :
+
+`Ctrl + X`.
+
+Configurer les permissions :
+
+```bash
+chmod 600 ~/.ssh/authorized_keys
+```
+
+Vérifier :
+
+```bash
+ls -ld ~/.ssh
+ls -l ~/.ssh/authorized_keys
+```
+
+Permissions attendues :
+
+```text
+drwx------ ... .ssh
+-rw------- ... authorized_keys
+```
+
+---
+
+### 7. Se connecter à la VM depuis son ordinateur
+
+Une fois la clé publique enregistrée sur la VM, revenir au **terminal de son ordinateur personnel**.
+
+Exécuter :
+
+```bash
+ssh -i ~/.ssh/id_ed25519_cyberquest rt@10.3.122.20
+```
+
+Explication :
+
+- `ssh` : ouvre une connexion SSH.
+- `-i` : indique la clé privée à utiliser.
+- `rt` : compte Linux de la VM.
+- `10.3.122.20` : adresse IP de notre VM.
+
+Lors de la première connexion, SSH peut demander de confirmer l'empreinte du serveur.
+
+Vérifier cette empreinte avec un membre du groupe qui a déjà établi une connexion fiable ou avec l'administrateur, puis accepter si elle correspond.
+
+Si une passphrase a été définie, elle sera demandée.
+
+**Résultat attendu :**
+
+```text
+rt@rt322f20:~$
+```
+
+Cela signifie que la connexion SSH a réussi.
+
+On peut maintenant exécuter des commandes directement sur la VM depuis son ordinateur.
+
+---
+
+### 8. Vérifier la connexion
+
+Une fois connecté, exécuter :
+
+```bash
+whoami
+```
+
+Résultat attendu :
+
+```text
+rt
+```
+
+Puis :
+
+```bash
+hostname
+```
+
+Résultat attendu :
+
+```text
+rt322f20
+```
+
+Ces commandes permettent de vérifier que l'on utilise bien le compte et la machine prévus.
+
+---
+
+### 9. Fermer la connexion SSH
+
+Pour quitter proprement la VM :
+
+```bash
+exit
+```
+
+Ou utiliser :
+
+`Ctrl + D`
+
+Le terminal revient alors sur l'ordinateur personnel.
+
+**Remarque :** Fermer la session SSH n'arrête pas la VM. Les services Apache et MariaDB continuent de fonctionner tant que la machine et les services restent actifs.
+
+---
+
+### 10. Problèmes fréquents
+
+**Erreur : `Permission denied (publickey)`**
+
+Le serveur refuse l'authentification SSH.
+
+Vérifier :
+- Que la bonne clé privée est utilisée avec `-i`.
+- Que la clé publique correspondante figure dans `~/.ssh/authorized_keys` sur la VM.
+- Que le fichier `authorized_keys` appartient au bon utilisateur.
+- Que le dossier `.ssh` a les permissions `700`.
+- Que `authorized_keys` a les permissions `600`.
+
+**Erreur : `Connection timed out`**
+
+Vérifier :
+- Que le VPN universitaire est connecté.
+- Que la VM est allumée.
+- Que l'adresse IP utilisée est correcte.
+- Que le réseau autorise l'accès SSH.
+
+**Erreur : `Connection refused`**
+
+Vérifier le service SSH sur la VM :
+
+```bash
+systemctl is-active ssh
+```
+
+**Erreur : `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`**
+
+Ne pas ignorer l'avertissement. Vérifier auprès du groupe ou de l'administrateur si les clés du serveur ont réellement changé avant de mettre à jour `known_hosts`.
+
+---
+
+### 11. Bonnes pratiques pour le groupe
+
+- Chaque membre utilise sa propre paire de clés SSH.
+- Ne jamais partager les clés privées.
+- Ne jamais publier une clé privée sur GitHub.
+- Ne pas supprimer les clés SSH des autres membres.
+- Ne pas désactiver l'authentification SSH existante sans coordination.
+- Éviter de modifier les paramètres du serveur SSH sans accord du groupe.
+- Fermer sa session avec `exit` après utilisation.
+- Prévenir les autres membres avant toute opération de maintenance ou redémarrage de la VM.
+
+**Note :** Ce guide décrit la connexion avec le compte partagé `rt`, utilisé pour notre configuration initiale. À terme, il est préférable que chaque membre dispose de son propre compte Linux pour faciliter la gestion des permissions et identifier les interventions.
+
+---
+
+### Résultat final
+
+Chaque membre ayant installé sa clé publique peut accéder à la VM avec :
+
+```bash
+ssh -i ~/.ssh/id_ed25519_cyberquest rt@10.3.122.20
+```
+
+La connexion permet de travailler directement sur le serveur Debian, notamment pour le développement du site web, la configuration d'Apache et les tests de communication avec MariaDB.
