@@ -11,9 +11,11 @@
 
 ## 2026-11-18 - Choix entre JavaFX et Web
 
-Donc, c’est le siteweb qui est globale?
+- **LLM utilisé :**  Gemini
+- **Prompt :**
+  > Donc, c’est le siteweb qui est globale?
 
-Non, JavaFX est avant tout une technologie d'application locale (bureau), et non un site web. Mon explication précédente portait sur la portée des variables dans le code (variables locales à une fonction vs globales à une classe), et non sur l'hébergement réseau.
+- **Réponse du LLM :** Non, JavaFX est avant tout une technologie d'application locale (bureau), et non un site web. Mon explication précédente portait sur la portée des variables dans le code (variables locales à une fonction vs globales à une classe), et non sur l'hébergement réseau.
 Si votre question porte sur où s'exécute le programme (en local sur l'ordinateur de l'utilisateur ou sur un serveur web), voici la distinction claire.
 
 1. JavaFX = Application Locale (Desktop)
@@ -37,3 +39,5 @@ Pour que je puisse vous orienter vers la bonne technologie, quel est votre objec
 • Créer un logiciel à installer sur un ordinateur ?
 • Créer un site internet accessible depuis un navigateur ?
 • Faire communiquer une application JavaFX avec une base de données en ligne ?
+
+- **Ce que j'en ai fait :** JavaFX est l'interface de gestion alors que le web est pour le quiz.
