@@ -17,6 +17,7 @@
 | Programme Java (classe Reponse) | Ilman | Danial | Aisya, Aiman | Tout |
 | Programme Java (classe BDD) | Aisya | Ilman | Danial, Aiman | Tout |
 | Programme Java (classe Main) | Danial | Aiman | Aisya, Ilman | Tout |
+| Interface graphique (JavaFX) | Danial | Aiman | Aisya, Ilman | Tout |
 | Base de données | Aisya | Ilman | Danial, Aiman | Tout |
 | Site Web | Ilman | Aisya | Aiman, Danial | Tout |
 | Intégration et JSON | Danial | Aiman | Aisya, Ilman | Tout |
