@@ -80,7 +80,6 @@ L'examen blanc constitue un entraînement facultatif.
 
 *Figure 8 — Tableau de progression de l'utilisateur.*
 
-Les statistiques présentées sont des données de démonstration utilisées pour illustrer la maquette.
 
 ---
 
