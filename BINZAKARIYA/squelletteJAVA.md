@@ -123,7 +123,7 @@
 
 ---
 
-## 5. Classe `Main` (Responsable : Danial)
+## 5. Classe `Main` (Responsable : Aiman)
 
 ### Méthode
 
