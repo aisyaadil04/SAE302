@@ -12,9 +12,15 @@
 
 **Sur son ordinateur personnel**, ouvrir un terminal et exécuter :
 
+Mac ou Linux
 ```bash
 ls -la ~/.ssh
 ```
+Windows PowerShell
+```bash
+Get-ChildItem $HOME\.ssh -Force
+```
+
 
 Cette commande affiche les fichiers du dossier `.ssh`.
 
@@ -30,11 +36,17 @@ Si une clé existe déjà, il est possible de la réutiliser. Pour notre projet,
 
 ### 2. Générer une paire de clés SSH
 
-**Sur son ordinateur personnel (Mac ou Linux) :**
+**Sur son ordinateur personnel :**
 
+Mac ou Linux
 ```bash
 ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_cyberquest -C "cyberquest-vm"
 ```
+Windows PowerShell
+```bash
+ssh-keygen -t ed25519 -f "$HOME\.ssh\id_ed25519_cyberquest" -C "cyberquest-vm"
+```
+
 
 Le terminal demande ensuite :
 
@@ -63,8 +75,13 @@ Deux fichiers sont créés :
 
 **Sur son ordinateur personnel :**
 
+Mac ou Linux
 ```bash
 cat ~/.ssh/id_ed25519_cyberquest.pub
+```
+Windows PowerShell
+```bash
+Get-Content "$HOME\.ssh\id_ed25519_cyberquest.pub"
 ```
 
 Le terminal affiche une ligne commençant par :
@@ -142,8 +159,13 @@ Une fois la clé publique enregistrée sur la VM, revenir au **terminal de son o
 
 Exécuter :
 
+Mac ou Linux
 ```bash
 ssh -i ~/.ssh/id_ed25519_cyberquest rt@10.3.122.20
+```
+Windows PowerShell
+```bash
+ssh -i "$HOME\.ssh\id_ed25519_cyberquest" rt@10.3.122.20
 ```
 
 
