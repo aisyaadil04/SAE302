@@ -1,0 +1,20 @@
+Structure de la classe Question 
+Attributs 
+  -type : String
+  -enonce : String
+  -reponses : ArrayList<Reponse>
+
+Méthodes
+  +Question(type,enonce)
+  +ajouterReponse(Reponse r)
+  +supprimerreponse(Reponse r)
+  +afficher()
+  +getType()
+  +getEnonce()
+  +getReponses()
+  +setType(String type)
+  +setEnonce(String enonce)
+
+
+Touts changements vont ici.
+  
